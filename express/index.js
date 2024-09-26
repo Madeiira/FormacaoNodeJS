@@ -23,6 +23,16 @@ app.get("/paramN/:nome?",function(req,res){ // rota com parametro Não obrigator
     }
 });
 
+app.get("/queryParam", function(req, res){
+    var nome = req.query["nome"];
+
+    if(nome){
+        res.send(nome); 
+    }else{
+        res.send("Nenhum nome fornecido!");
+    }
+})
+
 
 
 app.listen(4000,function(error){
