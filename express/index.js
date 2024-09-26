@@ -7,13 +7,13 @@ app.get("/",function(req,res){
 
 }); // criando rota inicial de busca
 
-app.get("/teste/:nome",function(req,res){ // rota com parametro obrigatorio 
+app.get("/paramO/:nome",function(req,res){ // rota com parametro obrigatorio 
 
     var nome = req.params.nome;
     res.send("Olá " + nome + "");
 });
 
-app.get("/teste2/:nome?",function(req,res){ // rota com parametro Não obrigatorio 
+app.get("/paramN/:nome?",function(req,res){ // rota com parametro Não obrigatorio 
 
     var nome = req.params.nome;
     if (nome){
