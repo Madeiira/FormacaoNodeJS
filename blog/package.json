@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Blog de perguntas e respostas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Madeiira/FormacaoNodeJS.git"
+  },
+  "author": "Gabriel Anjos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Madeiira/FormacaoNodeJS/issues"
+  },
+  "homepage": "https://github.com/Madeiira/FormacaoNodeJS#readme"
+}
