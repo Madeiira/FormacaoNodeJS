@@ -1,9 +1,13 @@
-const express = require("express");
-const app     = express();
+const express    = require("express");
+const bodyParser = require("body-parser")
+
+const app        = express();
 
 app.set('view engine','ejs'); // Fazendo o Express utilizar a ferramenta EJS como View Engine
 app.use(express.static('public')); // 
 
+app.use(bodyParser.urlencoded({extended: false})); // resgatar dados enviados pelo formulario para decodificar em uma estrutura javascript
+app.use(bodyParser.json());
 
 app.get("/",(req,res) => {
 
@@ -11,9 +15,17 @@ app.get("/",(req,res) => {
 
 }); 
 
-app.get("/perguntar",(req,res) => {
+app.get("/form",(req,res) => {
 
     res.render("perguntar")
+
+}); 
+
+app.post("/posts",(req,res) => {
+
+    var titulo   = req.body.titulo;
+    var pergunta = req.body.pergunta;
+
 
 }); 
 
