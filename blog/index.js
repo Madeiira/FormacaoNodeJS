@@ -11,6 +11,12 @@ app.get("/",(req,res) => {
 
 }); 
 
+app.get("/perguntar",(req,res) => {
+
+    res.render("perguntar")
+
+}); 
+
 // app.get("/:nome?/:ling?",function(req,res){
 //     var nome = req.params.nome;
 //     var ling = req.params.ling;
