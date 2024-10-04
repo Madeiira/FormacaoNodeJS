@@ -24,9 +24,8 @@ app.use(bodyParser.urlencoded({extended: false})); // resgatar dados enviados pe
 app.use(bodyParser.json());
 
 app.get("/",(req,res) => {
-    questionModel.findAll({raw: true, order:[
-        ['id','DESC']
-    ]}).then(questions=>{ //raw: true trazer apenas os dados salvos no banco
+    questionModel.findAll({raw: true, order:[['id','DESC']]
+    }).then(questions=>{ //raw: true trazer apenas os dados salvos no banco
         res.render("index",{
             questions: questions
         })
@@ -40,7 +39,7 @@ app.get("/form",(req,res) => {
 
 }); 
 
-app.post("/posts",(req,res) => {
+app.post("/questions",(req,res) => {
 
     var title   = req.body.title;
     var question = req.body.question;
@@ -49,7 +48,7 @@ app.post("/posts",(req,res) => {
         title: title,
         question: question
     }).then(() =>{
-        console.log("Pergunta enviada com sucesso");
+        console.log("Pergunta cadastrada com sucesso");
         res.redirect("/")
     }).catch((error)=>{
         console.log(error);
@@ -57,25 +56,22 @@ app.post("/posts",(req,res) => {
     })
 }); 
 
-// app.get("/:nome?/:ling?",function(req,res){
-//     var nome = req.params.nome;
-//     var ling = req.params.ling;
-    
-//     var exibirMsg = false;
-//     var perguntas  = [
-//         {questao: "Qual seu nome?", resposta: "Gabriel", solicitante: "Jeferson" },
-//         {questao: "Qual sua idade?",resposta: "22" ,solicitante: "João"}
-//     ]; 
-    
-//     res.render("index",{
-//         nome: nome,
-//         ling: ling,
-//         msg : exibirMsg,
-//         perguntas: perguntas
- 
-//     });
+app.post("/awnsers",(req,res) => {
 
-// });
+    var awnser   = req.body.awnser;
+    var questionId = req.body.questionId;
+
+    awnserModel.create({
+        awnser: awnser,
+        questionId: questionId
+    }).then(() =>{
+        console.log("Resposta cadastrada com sucesso");
+        res.redirect("/")
+    }).catch((error)=>{
+        console.log(error);
+        res.redirect("/")
+    })
+}); 
 
 app.get("/question/:id",(req,res) =>{
     var id = req.params.id;
@@ -84,9 +80,18 @@ app.get("/question/:id",(req,res) =>{
         where: {id: id}
     }).then(question=>{
         if(question != undefined){
-            res.render("question",{
-                question: question
+
+            awnserModel.findAll({
+                where:{questionId:question.id},raw: true, order:[['id','DESC']]
+            }).then(awnsers =>{
+
+                res.render("questionAwnser",{
+                    question: question,
+                    awnsers: awnsers
+                });
+
             });
+
         }else{
             res.redirect("/")
         }
