@@ -23,7 +23,9 @@ app.use(bodyParser.urlencoded({extended: false})); // resgatar dados enviados pe
 app.use(bodyParser.json());
 
 app.get("/",(req,res) => {
-    questionModel.findAll({raw: true}).then(questions=>{ //raw: true trazer apenas os dados salvos no banco
+    questionModel.findAll({raw: true, order:[
+        ['id','DESC']
+    ]}).then(questions=>{ //raw: true trazer apenas os dados salvos no banco
         res.render("index",{
             questions: questions
         })
@@ -73,6 +75,22 @@ app.post("/posts",(req,res) => {
 //     });
 
 // });
+
+app.get("/question/:id",(req,res) =>{
+    var id = req.params.id;
+
+    questionModel.findOne({
+        where: {id: id}
+    }).then(question=>{
+        if(question != undefined){
+            res.render("question",{
+                question: question
+            });
+        }else{
+            res.redirect("/")
+        }
+    });
+})
 
 app.listen(8080,function(){
      console.log("App Executando")
