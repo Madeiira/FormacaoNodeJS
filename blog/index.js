@@ -39,7 +39,16 @@ app.post("/posts",(req,res) => {
     var title   = req.body.title;
     var question = req.body.question;
 
-
+    questionModel.create({
+        title: title,
+        question: question
+    }).then(() =>{
+        console.log("Pergunta enviada com sucesso");
+        res.redirect("/")
+    }).catch((error)=>{
+        console.log(error);
+        res.redirect("/")
+    })
 }); 
 
 // app.get("/:nome?/:ling?",function(req,res){

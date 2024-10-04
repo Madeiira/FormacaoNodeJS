@@ -6,7 +6,7 @@ const Questions   = connection.define('Questions',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    description:{
+    question:{
         type: Sequelize.TEXT,
         allowNull: false
     }
