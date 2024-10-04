@@ -23,8 +23,11 @@ app.use(bodyParser.urlencoded({extended: false})); // resgatar dados enviados pe
 app.use(bodyParser.json());
 
 app.get("/",(req,res) => {
-
-    res.render("index")
+    questionModel.findAll({raw: true}).then(questions=>{ //raw: true trazer apenas os dados salvos no banco
+        res.render("index",{
+            questions: questions
+        })
+    })
 
 }); 
 
