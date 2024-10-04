@@ -1,6 +1,7 @@
 const express    = require("express");
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const questionModel = require("./database/Questions");
 
 const app        = express();
 
@@ -29,14 +30,14 @@ app.get("/",(req,res) => {
 
 app.get("/form",(req,res) => {
 
-    res.render("perguntar")
+    res.render("questions")
 
 }); 
 
 app.post("/posts",(req,res) => {
 
-    var titulo   = req.body.titulo;
-    var pergunta = req.body.pergunta;
+    var title   = req.body.title;
+    var question = req.body.question;
 
 
 }); 

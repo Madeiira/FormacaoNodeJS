@@ -2,7 +2,7 @@
 <body>
     <%- include ('partials/navbar.ejs'); %>
     <div class="container"> <!-- centralizar -->
-        <div class="card" id="titulo_formulario">
+        <div class="card" id="title_form">
             <div class="card-header">
                 <h1>Área das perguntas</h1>
             </div>
@@ -11,10 +11,10 @@
                 <hr>
                 <form method="post" action="/posts">
                     <label>Título:</label>
-                    <input name="titulo" type="text" placeholder="Título" class="form-control">
+                    <input name="title" type="text" placeholder="Título" class="form-control">
                     <br>
                     <label>Pergunta:</label>
-                    <textarea name="pergunta" placeholder="Digite Sua Pergunta" class="form-control"></textarea>
+                    <textarea name="question" placeholder="Digite Sua Pergunta" class="form-control"></textarea>
                     <hr>
                     <button class="btn btn-primary">Perguntar</button>
                 </form>
