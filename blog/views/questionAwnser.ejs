@@ -1,0 +1,45 @@
+<%- include ('partials/header.ejs'); %>
+<body>
+    <%- include ('partials/navbar.ejs'); %>
+
+    <div class="container" >
+        <br>
+        <div class="card-header">
+            <h1> <%= question.title %> </h1>
+            <p>  <%= question.question %> </p>
+        </div>
+        <hr>
+        <div class="card-body">
+            <form method="post" action="/awnsers">
+                <div class="card-header">
+                    <h1>Responder Pergunta</h1>
+                </div>                
+                <textarea name="awnser" placeholder="Digite Sua Resposta" class="form-control"></textarea>
+                <hr>
+                <button class="btn btn-success">Responder</button>
+                <input name="questionId" type="hidden" value="<%=question.id%>">
+            </form>
+        </div>
+        <div class="card-footer">
+            <h3> Respostas:</h3>
+            <br>
+            <% if (awnsers.length === 0) { %>
+                <h4>Ainda sem Respostas cadastradas</h4>
+            <% } else { %>
+    
+                <% awnsers.forEach(awnser => { %>
+                    <div class="card">
+                        <div class="card-body">
+
+                            <p><%= awnser.awnser %></p>
+                        </div>
+                    </div>
+            <% }) %>
+            <% } %>
+            
+        </div>
+    </div>
+    </div>
+</body>
+<%- include ('partials/footer.ejs'); %>
+     
