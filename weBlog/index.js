@@ -3,8 +3,14 @@ const { USE } = require('sequelize/lib/index-hints');
 const bodyParser = require('body-parser');
 const connection = require('./database/database')
 
+
 const app = express()
 const port = 8080
+
+//controllers requires
+const categoriesController = require('./categories/categoriesController')
+const articlesController = require('./articles/articlesController')
+
 
 //view engine
 app.set('view engine', 'ejs');
@@ -36,3 +42,8 @@ app.listen(port, () => {
 });
 
 
+//Categories Routes 
+app.use('/', categoriesController);
+
+//Articles Routes
+app.use('/', articlesController);
