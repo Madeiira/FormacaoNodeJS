@@ -1,7 +1,7 @@
 const express = require('express');
 const { USE } = require('sequelize/lib/index-hints');
 const bodyParser = require('body-parser');
-const connection = require('./database/database')
+const connection = require('./database/Database')
 
 
 const app = express()
