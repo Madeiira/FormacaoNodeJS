@@ -1,5 +1,16 @@
+<%- include ('./header.ejs') %>
+
 <nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">
-        Weblog
-    </a>
+    <a href="/" class="navbar-brand">Weblog</a>
+    <div class="dropdown">
+        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categorias
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin/categories/New">Criar Categoria</a>
+            <a class="dropdown-item" href="/">Listar Categorias</a>
+        </div>
+    </div>
 </nav>
+
+<%- include ('./footer.ejs') %>
