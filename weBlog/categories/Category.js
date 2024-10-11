@@ -1,7 +1,7 @@
 const sequelize = require("sequelize")
 const connection = require("../database/Database")
 
-const categories = connection.define('categories',{
+const Category = connection.define('categories',{
     title:{
         type: sequelize.STRING,
         allowNull: false
@@ -13,4 +13,11 @@ const categories = connection.define('categories',{
 
 });
 
-module.exports = categories;
+// Category.sync({force: true})
+
+
+module.exports = Category;
+
+//RELACIONAMENTO CATEGORIA E ARTIGOS
+// 1 Artigo pertence a 1 categoria 1-1
+// N Artigos pertencem a 1 categoria 1-N
