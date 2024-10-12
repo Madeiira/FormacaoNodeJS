@@ -11,8 +11,8 @@ router.get('/categories', (req, res) => {
 
 //ROTAS DE ACESSO APENAS PARA ADMINS
 
-router.get('/admin/categories/new', function (req, res) {
-  res.render("admin/categories/New")
+router.get('/admin/categories', function (req, res) {
+  res.render("admin/categories/index")
 });
 
 //PADRÃO API RESTful
