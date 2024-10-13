@@ -60,4 +60,44 @@ router.post('/admin/categories/delete', function(req, res) {
   }
 });
 
+//ROTA PARA ATUALIZAR CATEGORIA
+
+router.post('/admin/categories/update', function(req, res) {
+  let id  = req.body.id;
+  let newTitle = req.body.title;
+  let newSlug  = slugify(newTitle)
+
+  if(id != undefined && !isNaN(id)){
+    Category.update({title:newTitle, slug: newSlug},{
+      where:{
+        id:id
+      }
+    }).then(()=>{
+      res.redirect("/admin/categories");
+    })
+  }else{
+    res.redirect("/admin/categories");
+  }
+});
+
+
+//ROTA PARA LISTAR CATEGORIA A SER ATUALIZADA
+
+router.get('/admin/categories/edit/:id', function(req, res) {
+  const id  = req.params.id;
+
+  Category.findByPk(id).then(category=>{
+
+    if(category != undefined && category != "" && !isNaN(id)){
+      
+      res.render("admin/categories/edit",{category:category})
+
+    }else{
+      res.redirect("/admin/categories")
+    }
+
+  });
+
+});
+
 module.exports = router;
