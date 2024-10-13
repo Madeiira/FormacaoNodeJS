@@ -16,13 +16,40 @@
             </tr>
         </thead>
         <tbody>
+            <% if (categories.length === 0) { %>
+                <h4>Ainda sem Categorias Cadastradas cadastradas</h4>
+            <% }else{ %>
+            <% categories.forEach(category => { %>
+
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th><%= category.id %></th>
+                <th><%= category.title %></th>
+                <th><%= category.slug %></th>
+                <th>
+                    <button class="btn btn-warning" href="admin/categories/edit"> Editar </button>
+                    
+                    <form method="POST" action="/admin/categories/delete" style="display: inline;" onsubmit="deleteConfirm(event,'<%= category.title %>',this)">
+                        <input type="hidden" value="<%= category.id %>" name="id">
+                        <button class="btn btn-danger"  > Excluir </button>
+                    </form>
+                </th>
+
             </tr>
+            <% }) %>
+            <% } %>
         </tbody>
     </table>
 </div>
 <%- include ('../../partials/footer.ejs') %>
+
+<script>
+    function deleteConfirm(event,categoryName,form){
+        event.preventDefault(); // impede que o form seja submetido
+        if(confirm("Deseja deletar a categoria: " + categoryName) == true ){
+            form.submit();
+            alert("Exclusão confirmada!")
+        }else{
+            alert("Exclusão cancelada")
+        }
+    }
+</script>
