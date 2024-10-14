@@ -1,0 +1,23 @@
+<%- include ('../../partials/header.ejs') %>
+
+<%- include ('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h2> Cadastro de Artigos:</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/admin/articles/create">
+                <input class="form-control" type="text" name="title" placeholder="Insira o titulo do novo artigo">
+                <textarea class="form-control" placeholder="Escreva o artigo" name="body"></textarea>
+                <br>
+                <button class="btn btn-success"> Cadastrar </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>
+ 
