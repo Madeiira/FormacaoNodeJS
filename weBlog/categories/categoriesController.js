@@ -65,10 +65,9 @@ router.post('/admin/categories/delete', function(req, res) {
 router.post('/admin/categories/update', function(req, res) {
   let id  = req.body.id;
   let newTitle = req.body.title;
-  let newSlug  = slugify(newTitle)
 
   if(id != undefined && !isNaN(id)){
-    Category.update({title:newTitle, slug: newSlug},{
+    Category.update({title:newTitle, slug: slugify(newTitle)},{
       where:{
         id:id
       }
