@@ -11,7 +11,7 @@
         <div class="card-body">
             <form method="post" action="/admin/articles/create">
                 <input class="form-control" type="text" name="title" placeholder="Insira o titulo do novo artigo">
-                <textarea class="form-control" placeholder="Escreva o artigo" name="body"></textarea>
+                <textarea class="form-control" placeholder="Escreva o artigo" name="articleBody" id="articleBody"></textarea>
                 <br>
                 <button class="btn btn-success"> Cadastrar </button>
             </form>
@@ -20,4 +20,13 @@
 </div>
 
 <%- include ('../../partials/footer.ejs') %>
+
+<script>
+    tinymce.init({
+        selector: "#articleBody",
+        plugins:[
+            'lists advlist autolink link linkchecker image code print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ]
+    })
+</script>
  
