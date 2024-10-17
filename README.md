@@ -6,7 +6,7 @@
 ## Motivação
 ### Com a evolução crescente da demanda por desenvolvedores web, senti ser essencial e também tive a vontade de revisitar e dominar as tecnologias que estão moldando a indústria.
 
-## O que você aprenderá
+## O que eu aprenderei
 - **Node.js**: Fundamentos e aplicação na construção de servidores.
 - **Express.js**: Criação de APIs RESTful e gerenciamento de rotas.
 - **Vue.js**: Desenvolvimento de interfaces dinâmicas e responsivas.
