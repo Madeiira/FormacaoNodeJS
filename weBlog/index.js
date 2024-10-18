@@ -1,5 +1,4 @@
 const express = require('express');
-const { USE } = require('sequelize/lib/index-hints');
 const bodyParser = require('body-parser');
 const connection = require('./database/Database');
 
@@ -27,15 +26,15 @@ app.use(express.static('public'))
 
 // Database authentication
 
-connection 
+connection
     .authenticate()
     .then(() => {
         console.log("Conexão feita com sucesso")
     }).catch((error) =>{
         console.log(error)
     });
- 
- 
+
+
 app.get("/",(req,res) =>{
     res.render("index");
 })
@@ -45,7 +44,7 @@ app.listen(port, () => {
 });
 
 
-//Categories Routes 
+//Categories Routes
 app.use('/', categoriesController);
 
 //Articles Routes
