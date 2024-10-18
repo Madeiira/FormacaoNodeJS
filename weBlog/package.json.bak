@@ -23,5 +23,9 @@
     "mysql2": "^3.11.3",
     "sequelize": "^6.37.4",
     "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "eslint": "^8.57.1"
   }
 }
