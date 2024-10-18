@@ -1,15 +1,17 @@
-import { Router } from 'express'
-import { findAll } from '../categories/Category'
-const router = Router()
+const express = require("express");
+const router  = express.Router();
+const category = require("../categories/Category")
 
 router.get('/articles', (req, res) => {
   res.send('Route Articles')
-})
+});
 
 router.get('/admin/articles/new', function (req, res) {
-  findAll().then((categories) => {
-    res.render('admin/articles/new', { categories })
+  category.findAll().then(categories =>{
+
+    res.render('admin/articles/new',{categories:categories})
+
   })
 })
 
-export default router
+module.exports = router;
