@@ -1,8 +1,8 @@
-import Sequelize from 'sequelize'
+const Sequelize = require("sequelize")
 
 const connection = new Sequelize('weblog', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
 })
 
-export default connection
+module.exports = connection;
