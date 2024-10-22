@@ -13,7 +13,7 @@
                 <input class="form-control" type="text" name="title" placeholder="Insira o titulo do novo artigo">
                 <textarea class="form-control" placeholder="Escreva o artigo" name="articleBody" id="articleBody"></textarea>
                 <br>
-                <select class="form-control" aria-label=".form-select-sm example">
+                <select name="categoryId" class="form-control" aria-label=".form-select-sm example">
             <% if (categories.length === 0) { %>
                 <option selected value="0">Sem categorias cadastradas</option>
             <% }else{ %>
@@ -21,7 +21,7 @@
                 <% categories.forEach(category => { %>
                     <option value="<%= category.id %>"><%= category.title %> </option>
                 <% }) %>
-            <% } %> 
+            <% } %>
         </select>
                 <hr>
                 <button class=" btn btn-success"> Cadastrar Artigo</button>
