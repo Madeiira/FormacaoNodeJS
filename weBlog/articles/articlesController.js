@@ -4,8 +4,14 @@ const Category = require("../categories/Category")
 const Article = require("./Article");
 const slugify  = require("slugify");
 
-router.get('/articles', (req, res) => {
-  res.send('Route Articles')
+router.get('/admin/articles', (req, res) => {
+    Article.findAll({
+        include:[{model:Category}] // Join
+    }).then(articles =>{
+
+        res.render('admin/articles/index',{articles:articles})
+
+      })
 });
 
 router.get('/admin/articles/new', function (req, res) {
@@ -31,11 +37,11 @@ router.post('/admin/articles/create', function (req, res) {
         categoryId: categoryId
 
       }).then(()=>{
-        res.redirect("/admin/articles/new");
+        res.redirect("/articles");
       });
 
     }else{
-      res.redirect("/");
+      res.redirect("/admin/articles/new");
     }
 
   });
