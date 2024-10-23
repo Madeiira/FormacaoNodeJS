@@ -1,0 +1,55 @@
+<%- include ('../../partials/header.ejs') %>
+
+<%- include ('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>Artigos: </h2>
+    <hr>
+    <table class="table">
+        <thead> <!-- Cabeçalho-->
+            <tr> <!-- linhas -->
+                <th>Título</th><!-- Colunas -->
+                <th>Slug</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (articles.length === 0) { %>
+                <h4>Ainda sem Categorias Cadastradas cadastradas</h4>
+            <% }else{ %>
+            <% articles.forEach(article => { %>
+
+            <tr>
+                <th><%= article.title %></th>
+                <th><%= article.slug %></th>
+                <th><%= article.category.title %></th>
+                <th>
+                    <a class="btn btn-warning" href="/admin/article/edit/<%= article.id %>"> Editar </a>
+
+                    <form method="POST" action="/admin/articles/delete" style="display: inline;" onsubmit="deleteConfirm(event,'<%= article.title %>',this)">
+                        <input type="hidden" value="<%= article.id %>" name="id">
+                        <button class="btn btn-danger"  > Excluir </button>
+                    </form>
+                </th>
+
+            </tr>
+            <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<%- include ('../../partials/footer.ejs') %>
+
+<script>
+    function deleteConfirm(event,articleName,form){
+        event.preventDefault(); // impede que o form seja submetido
+        if(confirm("Deseja deletar a categoria: " + articleName) == true ){
+            form.submit();
+            alert("Exclusão confirmada!")
+        }else{
+            alert("Exclusão cancelada")
+        }
+    }
+</script>
