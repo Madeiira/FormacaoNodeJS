@@ -14,12 +14,31 @@ router.get('/admin/articles', (req, res) => {
       })
 });
 
-router.get('/admin/articles/new', function (req, res) {
+router.get('/admin/articles/new',  (req, res) => {
   Category.findAll().then(categories =>{
 
     res.render('admin/articles/new',{categories:categories})
 
   })
+})
+
+router.post('/admin/articles/delete',(req,res) =>{
+
+    const articleId = req.body.id;
+
+    if(articleId != undefined && !isNaN(articleId)){
+
+        Article.destroy({
+            where:{
+               id: articleId
+        }
+        }).then(()=>{
+            res.redirect('/admin/articles');
+        })
+    }else{
+        res.redirect('/');
+    }
+
 })
 
 router.post('/admin/articles/create', function (req, res) {
