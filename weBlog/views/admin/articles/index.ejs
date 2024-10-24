@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             <% if (articles.length === 0) { %>
-                <h4>Ainda sem Categorias Cadastradas cadastradas</h4>
+                <h4>Ainda sem Artigos Cadastrados</h4>
             <% }else{ %>
             <% articles.forEach(article => { %>
 
@@ -26,7 +26,7 @@
                 <th><%= article.slug %></th>
                 <th><%= article.category.title %></th>
                 <th>
-                    <a class="btn btn-warning" href="/admin/article/edit/<%= article.id %>"> Editar </a>
+                    <a class="btn btn-warning" href="/admin/articles/edit/<%= article.id %>"> Editar </a>
 
                     <form method="POST" action="/admin/articles/delete" style="display: inline;" onsubmit="deleteConfirm(event,'<%= article.title %>',this)">
                         <input type="hidden" value="<%= article.id %>" name="id">

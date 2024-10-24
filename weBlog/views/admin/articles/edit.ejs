@@ -1,0 +1,38 @@
+<%- include ('../../partials/header.ejs') %>
+
+<%- include ('../../partials/navbar.ejs') %>
+<% function escapeHtml(html) {
+    return html.replace(/<[^>]*>/g, '');
+} %>
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h2> Edição de Artigo:</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/admin/articles/update">
+                <input name="id" value="<%= article.id %>" type="hidden">
+                <input class="form-control" type="text" name="title" value="<%= article.title %>">
+                <textarea class="form-control" name="articleBody" id="articleBody"><%= escapeHtml(article.body) %></textarea>
+                <br>
+                <select name="categoryId" class="form-control" aria-label=".form-select-sm example">
+                <% if (categories.length === 0) { %>
+                    <option selected value="0">Sem categorias cadastradas</option>
+                <% }else{ %>
+                    <option value="<%= article.category.id %>" selected> <%= article.category.title %> </option>
+                    <% categories.forEach(category => { %>
+                        <% if (category.id !== article.category.id) { %> <!-- Evitar duplicidade de categorias-->
+                            <option value="<%= category.id %>"><%= category.title %> </option>
+                        <% } %>
+                    <% }) %>
+                <% } %>
+                </select>
+                <hr>
+                <button class="btn btn-success"> Editar Artigo</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>
