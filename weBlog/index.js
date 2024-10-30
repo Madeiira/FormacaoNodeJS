@@ -39,7 +39,10 @@ connection
 
 app.get("/",(req,res) =>{
     Article.findAll({
-        include:[{model:Category}] // Join
+        include:[{model:Category}], // Join
+        order:[
+            ['id','DESC']
+        ]
     }).then(articles=>{
 
         res.render("index", {
@@ -60,3 +63,22 @@ app.use('/', categoriesController);
 
 //Articles Routes
 app.use('/', articlesController);
+
+app.get('/artigos/:slug', async(req, res) => {
+    var slug = req.params.slug;
+
+    Article.findOne({
+        where:{
+            slug: slug
+        }
+    }).then(article=>{
+        if(article != undefined){
+            res.render("article",{article:article})
+        }else{
+            res.redirect("/")
+        }
+    }).catch(error =>{
+        res.redirect("/")
+    });
+
+})

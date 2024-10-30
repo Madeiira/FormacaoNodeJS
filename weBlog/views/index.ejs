@@ -20,8 +20,8 @@
 
                             </div>
                             <div class="card-body">
-                                <p> <%= truncateText(article.body, 10) %></p>
-                                <a class="btn btn-success" href=""> Ler Restante do Artigo </a>
+                                <p> <%- truncateText(article.body, 10) %></p>
+                                <a class="btn btn-success" href="/artigos/<%=article.slug%>"> Ler Restante do Artigo </a>
                             </div>
                             <br>
                         </div>
