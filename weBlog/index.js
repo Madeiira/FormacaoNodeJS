@@ -36,7 +36,13 @@ connection
 
 
 app.get("/",(req,res) =>{
-    res.render("index");
+    Article.findAll({
+        include:[{model:Category}] // Join
+    }).then(articles=>{
+
+        res.render("index", {articles:articles});
+
+    });
 })
 
 app.listen(port, () => {

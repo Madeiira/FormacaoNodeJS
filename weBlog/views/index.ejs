@@ -1,8 +1,14 @@
 <%- include ('./partials/header.ejs') %>
 
 <%- include ('./partials/navbar.ejs') %>
+<div class="container">
+    <% if (articles.length === 0) { %>
+        <h4>Ainda sem Artigos Cadastrados</h4>
+    <% }else{ %>
+    <% articles.forEach(article => { %>
 
-<body>
-</body>
+    <% }) %>
+    <% } %>
+</div>
 
 <%- include ('./partials/footer.ejs') %>
