@@ -36,3 +36,12 @@
 </div>
 
 <%- include ('../../partials/footer.ejs') %>
+<script>
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#articleBody",
+        plugins: [
+            'lists advlist autolink link linkchecker image code print preview hr searchreplace wordcount fullscreen insertdatetime media save paste emoticons'
+        ]
+    })
+</script>
