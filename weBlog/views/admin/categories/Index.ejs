@@ -1,6 +1,6 @@
 <%- include ('../../partials/header.ejs') %>
 
-<%- include ('../../partials/navbar.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
 
 <div class="container">
     <hr>
@@ -12,7 +12,7 @@
                 <th>ID</th><!-- Colunas -->
                 <th>Título</th>
                 <th>Slug</th>
-                <th>Ações</th> 
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 <th><%= category.slug %></th>
                 <th>
                     <a class="btn btn-warning" href="/admin/categories/edit/<%= category.id %>"> Editar </a>
-                    
+
                     <form method="POST" action="/admin/categories/delete" style="display: inline;" onsubmit="deleteConfirm(event,'<%= category.title %>',this)">
                         <input type="hidden" value="<%= category.id %>" name="id">
                         <button class="btn btn-danger"  > Excluir </button>

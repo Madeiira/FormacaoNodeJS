@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./database/Database');
 
+//util functions
+const truncateText = require('./utils/functionsUtil');
 
 const app = express()
 const port = 8080
@@ -36,7 +38,19 @@ connection
 
 
 app.get("/",(req,res) =>{
-    res.render("index");
+    Article.findAll({
+        include:[{model:Category}], // Join
+        order:[
+            ['id','DESC']
+        ]
+    }).then(articles=>{
+
+        res.render("index", {
+            articles:articles,
+            truncateText: truncateText
+        });
+
+    });
 })
 
 app.listen(port, () => {
@@ -49,3 +63,22 @@ app.use('/', categoriesController);
 
 //Articles Routes
 app.use('/', articlesController);
+
+app.get('/artigos/:slug', async(req, res) => {
+    var slug = req.params.slug;
+
+    Article.findOne({
+        where:{
+            slug: slug
+        }
+    }).then(article=>{
+        if(article != undefined){
+            res.render("article",{article:article})
+        }else{
+            res.redirect("/")
+        }
+    }).catch(error =>{
+        res.redirect("/")
+    });
+
+})

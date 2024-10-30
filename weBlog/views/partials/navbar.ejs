@@ -1,27 +1,7 @@
-<%- include ('./header.ejs') %>
+<%- include ('header.ejs') %>
 
 <nav class="navbar navbar-dark bg-dark d-flex justify-content-between">
-    <a href="/" class="navbar-brand">Weblog</a>
-    <div class="d-flex">
-        <div class="dropdown me-3">
-            <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categorias
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
-                <a class="dropdown-item" href="/admin/categories/New">Criar Categoria</a>
-                <a class="dropdown-item" href="/admin/categories">Listar Categorias</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownArticles" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Artigos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownArticles">
-                <a class="dropdown-item" href="/admin/articles/New">Criar Artigos</a>
-                <a class="dropdown-item" href="/admin/articles">Listar Artigos</a>
-            </div>
-        </div>
-    </div>
+    <a href="/" class="navbar-brand">Weblog Home</a>
 </nav>
 
-<%- include ('./footer.ejs') %>
+<%- include ('footer.ejs') %>

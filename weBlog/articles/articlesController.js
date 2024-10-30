@@ -50,7 +50,7 @@ router.post('/admin/articles/create', function (req, res) {
 router.post('/admin/articles/update', function(req, res) {
     let id  = req.body.id;
     let newTitle = req.body.title;
-    let newBody = req.body.body;
+    let newBody = req.body.articleBody;
     let newCategoryId = req.body.categoryId
 
     if(id != undefined && !isNaN(id)){
