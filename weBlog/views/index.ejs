@@ -5,9 +5,29 @@
     <% if (articles.length === 0) { %>
         <h4>Ainda sem Artigos Cadastrados</h4>
     <% }else{ %>
-    <% articles.forEach(article => { %>
+            <body>
+                <div class="container">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Bem Vindo!</h1>
+                        <p class="lead">Esta é a Home Page do meu primeiro projeto node.js utilzando Express, Bootstrap, EJS e banco de dados MySQL.</p>
+                    </div>
+                    <% articles.forEach(article => { %>
+                        <div class="card">
 
-    <% }) %>
+                            <div class="card-header">
+                                <h3> <%= article.title %> </h3>
+
+                            </div>
+                            <div class="card-body">
+                                <a class="btn btn-success" href=""> Ler Restante do Artigo </a>
+                            </div>
+                            <br>
+                        </div>
+
+                    <% }) %>
+
+                </div>
+            </body>
     <% } %>
 </div>
 
