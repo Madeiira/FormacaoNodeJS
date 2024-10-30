@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./database/Database');
 
+//util functions
+const truncateText = require('./utils/functionsUtil');
 
 const app = express()
 const port = 8080
@@ -40,7 +42,10 @@ app.get("/",(req,res) =>{
         include:[{model:Category}] // Join
     }).then(articles=>{
 
-        res.render("index", {articles:articles});
+        res.render("index", {
+            articles:articles,
+            truncateText: truncateText
+        });
 
     });
 })
