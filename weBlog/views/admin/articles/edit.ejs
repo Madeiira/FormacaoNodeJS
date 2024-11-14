@@ -14,7 +14,7 @@
             <form method="post" action="/admin/articles/update">
                 <input name="id" value="<%= article.id %>" type="hidden">
                 <input class="form-control" type="text" name="title" value="<%= article.title %>">
-                <textarea class="form-control" name="articleBody" id="articleBody"><%= escapeHtml(article.body) %></textarea>
+                <textarea class="form-control" name="articleBody" id="articleBody"><%- article.body %></textarea>
                 <br>
                 <select name="categoryId" class="form-control" aria-label=".form-select-sm example">
                 <% if (categories.length === 0) { %>
